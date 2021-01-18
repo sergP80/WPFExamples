@@ -28,14 +28,14 @@ namespace WinFormThreading1
         {
             IArrayProcessor processor = new ArrayProcessor<int, double>();
             ((ArrayProcessor<int, double>)processor).Action = ProcessorFunctions.IntProcessFunction1;
-            ((ArrayProcessor<int, double>)processor).Data = createIntRandomArray(1000, -1000, 100); ;
+            ((ArrayProcessor<int, double>)processor).Data = ArrayInternalUtils.createIntRandomArray(1000, -1000, 100); ;
             ((ArrayProcessor<int, double>)processor).ProgressCallback = ProgressCallback1;
             ((ArrayProcessor<int, double>)processor).FinalCallback = FinalCallback1;
             this.arrayProcessors.Add(processor);
 
             processor = new ArrayProcessor<double, double>();
             ((ArrayProcessor<double, double>)processor).Action = ProcessorFunctions.DoubleProcessFunction2;
-            ((ArrayProcessor<double, double>)processor).Data = createRandomFloatArray(1000, -1000, 100); ;
+            ((ArrayProcessor<double, double>)processor).Data = ArrayInternalUtils.createRandomFloatArray(1000, -1000, 100); ;
             ((ArrayProcessor<double, double>)processor).ProgressCallback = ProgressCallback2;
             ((ArrayProcessor<double, double>)processor).FinalCallback = FinalCallback2;
             this.arrayProcessors.Add(processor);
@@ -84,46 +84,35 @@ namespace WinFormThreading1
             InternalProgressCallback(lbResult2, result, progress);
         }
 
-        private int[] createIntRandomArray(int size, int from, int to)
-        {
-            int[] data = new int[size];
-            var random = new Random(DateTime.Now.Millisecond);
-            for (int i = 0; i < size; ++i)
-            {
-                data[i] = random.Next(from, to);
-            }
-            return data;
-        }
-
-        private double[] createRandomFloatArray(int size, double from, double to)
-        {
-            double[] data = new double[size];
-            var random = new Random(DateTime.Now.Millisecond);
-            for (int i = 0; i < size; ++i)
-            {
-                data[i] = from + (to - from) * random.NextDouble();
-            }
-            return data;
-        }
-
         private void fmMain_Load(object sender, EventArgs e)
         {
             this.InitProcessors();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.arrayProcessors.ForEach(processor => processor.Run());
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.arrayProcessors.ForEach(processor => processor.Stop());
         }
 
         private void fmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.arrayProcessors.ForEach(processor => processor.Stop());
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var currentStatus = this.arrayProcessors.Any(processor => processor.IsRunning);
+            if (currentStatus)
+            {
+                this.arrayProcessors.ForEach(processor => processor.Stop());
+                while(this.arrayProcessors.Any(processor => processor.IsRunning))
+                {
+                    Thread.Sleep(10);
+                }
+
+                btnRunner.Text = "Start all";
+            } else
+            {
+                btnRunner.Text = "Stop all";
+                this.arrayProcessors.ForEach(processor => processor.Run());
+            }
+            
+        }
+
     }
 }

@@ -11,7 +11,7 @@ namespace WinFormThreading1
     interface IArrayProcessor
     {
         void Run();
-
+        bool IsRunning { get; }
         void Stop();
     }
     public class ArrayProcessor<D, T>: IArrayProcessor
@@ -22,7 +22,14 @@ namespace WinFormThreading1
         public TaskProcessDelegate<D, T> Action { get; set; }
         public Action<T, bool> FinalCallback { get; set; }
         public Action<T, int> ProgressCallback { get; set; }
-        
+
+        public bool IsRunning {
+            get
+            {
+                return this.isRun;
+            }
+        }
+
         public void Run()
         {
             if (this.isRun)
