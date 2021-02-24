@@ -51,7 +51,7 @@ namespace WinFormThreading1
                 }
                 else
                 {
-                    label.Text = "Computation task was broken";
+                    label.Text = string.Format("Broken with [{0}]", result);
                 }
             });
         }
@@ -66,22 +66,23 @@ namespace WinFormThreading1
             InternalFinalCallback(this.lbResult2, result, status);
         }
 
-        private void InternalProgressCallback(Label label, double result, int progress)
+        private void InternalProgressCallback(Label label, ProgressBar pbar, double result, int progress)
         {
             label.Invoke((MethodInvoker)delegate {
-                label.Text = string.Format("Processed {0}%. Current result: {1:###.####}", progress, result);
+                label.Text = string.Format("Current: {1:###.####} [{0}%].", progress, result);
+                pbar.Value = progress;
             });
 
         }
 
         private void ProgressCallback1(double result, int progress)
         {
-            InternalProgressCallback(lbResult, result, progress);
+            InternalProgressCallback(lbResult, progressBar1, result, progress);
         }
 
         private void ProgressCallback2(double result, int progress)
         {
-            InternalProgressCallback(lbResult2, result, progress);
+            InternalProgressCallback(lbResult2, progressBar2, result, progress);
         }
 
         private void fmMain_Load(object sender, EventArgs e)
@@ -94,10 +95,16 @@ namespace WinFormThreading1
             this.arrayProcessors.ForEach(processor => processor.Stop());
         }
 
+        public bool AllTaskStatus
+        {
+            get
+            {
+                return this.arrayProcessors.Any(processor => processor.IsRunning);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            var currentStatus = this.arrayProcessors.Any(processor => processor.IsRunning);
-            if (currentStatus)
+            if (AllTaskStatus)
             {
                 this.arrayProcessors.ForEach(processor => processor.Stop());
                 while(this.arrayProcessors.Any(processor => processor.IsRunning))
@@ -114,5 +121,25 @@ namespace WinFormThreading1
             
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (sender is Control)
+            {
+                string tag = (string)(sender as Control).Tag;
+                try
+                {
+                    int taskNumber = int.Parse(tag);
+                    var task = this.arrayProcessors[taskNumber];
+                    task.Stop();
+                    if (AllTaskStatus)
+                    {
+                        btnRunner.Text = "Start all";
+                    }
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
