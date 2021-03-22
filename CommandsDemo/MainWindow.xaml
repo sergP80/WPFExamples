@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Window.CommandBindings>
+        <CommandBinding x:Name="newCmd" Command="ApplicationCommands.New" Executed="newCmd_Executed"/>
         <CommandBinding x:Name="openCmd" Command="ApplicationCommands.Open" Executed="openCmd_Executed"/>
         <CommandBinding x:Name="saveCmd" Command="ApplicationCommands.Save" Executed="saveCmd_Executed" CanExecute="saveCmd_CanExecute"/>
         <CommandBinding x:Name="exitCmd" Command="ApplicationCommands.Close" Executed="exitCmd_Executed" />
@@ -16,30 +17,81 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem x:Name="miFile" Header="File">
-                <MenuItem x:Name="miFileNew" Header="New"/>
-                <MenuItem x:Name="miFileOpen" Header="Open..." Command="ApplicationCommands.Open" />
-                <MenuItem x:Name="miFileSave" Header="Save..." Command="ApplicationCommands.Save"/>
+                <MenuItem x:Name="miFileNew" Header="New" Command="ApplicationCommands.New">
+                    <MenuItem.Icon>
+                        <Image Source="NewFile_16x.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="miFileOpen" Header="Open..." Command="ApplicationCommands.Open">
+                    <MenuItem.Icon>
+                        <Image Source="OpenFile_16x.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="miFileSave" Header="Save..." Command="ApplicationCommands.Save">
+                    <MenuItem.Icon>
+                        <Image Source="Save_16x.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="miFileExit" Header="Exit" Command="ApplicationCommands.Close"/>
+                <MenuItem x:Name="miFileExit" Header="Exit" Command="ApplicationCommands.Close">
+                    <MenuItem.Icon>
+                        <Image Source="Close_16x.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Copy"/>
-                <MenuItem Header="Paste"/>
+                <MenuItem Header="Cut" Command="ApplicationCommands.Cut">
+                    <MenuItem.Icon>
+                        <Image Source="Cut_16x.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Copy"  Command="ApplicationCommands.Copy">
+                    <MenuItem.Icon>
+                        <Image Source="Copy_16x.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Paste"  Command="ApplicationCommands.Paste">
+                    <MenuItem.Icon>
+                        <Image Source="Paste_16x.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
-        
-        <ToolBar DockPanel.Dock="Top">
-            <Button Command="ApplicationCommands.Open">
-                <Image Source="OpenFile_16x.png" Height="24" Width="24"></Image>
-            </Button>
-            <Separator/>
-            <Button Command="ApplicationCommands.Save">
-                <Image Source="Save_16x.png" Height="24" Width="24"></Image>
-            </Button>
-            <Button Command="ApplicationCommands.Close">
-                <Image Source="Close_16x.png" Height="24" Width="24"></Image>
-            </Button>
-        </ToolBar>
+
+
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Command="ApplicationCommands.New">
+                    <Image Source="NewFile_16x.png" Height="24" Width="24"></Image>
+                </Button>
+                <Separator/>
+                <Button Command="ApplicationCommands.Open">
+                    <Image Source="OpenFile_16x.png" Height="24" Width="24"></Image>
+                </Button>
+                <Separator/>
+                <Button Command="ApplicationCommands.Save">
+                    <Image Source="Save_16x.png" Height="24" Width="24"></Image>
+                </Button>
+                <Separator/>
+                <Button Command="ApplicationCommands.Close">
+                    <Image Source="Close_16x.png" Height="24" Width="24"></Image>
+                </Button>
+            </ToolBar>
+            <ToolBar>
+                <Button Command="ApplicationCommands.Cut">
+                    <Image Source="Cut_16x.png" Height="24" Width="24"></Image>
+                </Button>
+                <Separator/>
+                <Button Command="ApplicationCommands.Copy">
+                    <Image Source="Copy_16x.png" Height="24" Width="24"></Image>
+                </Button>
+                <Separator/>
+                <Button Command="ApplicationCommands.Paste">
+                    <Image Source="Paste_16x.png" Height="24" Width="24"></Image>
+                </Button>
+                <Separator/>
+            </ToolBar>
+        </ToolBarTray>
 
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>

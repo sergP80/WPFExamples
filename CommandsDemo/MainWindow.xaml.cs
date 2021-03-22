@@ -90,9 +90,30 @@ namespace CommandsDemo
         {
             if (this.isModified)
             {
-                saveCmd_Executed(sender, e);
+                var showResult = MessageBox.Show("Do you want to save changed", "Save changes", MessageBoxButton.YesNoCancel);
+                switch (showResult)
+                {
+                    case MessageBoxResult.Yes:
+                        saveCmd_Executed(sender, e);
+                        Close();
+                        break;
+                    case MessageBoxResult.Cancel:
+                        break;
+                    default:
+                        Close();
+                        break;
+                }
+            } else
+            {
+                Close();
             }
-            Close();
+            
+        }
+
+        private void newCmd_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.isModified = false;
+            this.txtArea.Text = "";
         }
     }
 }

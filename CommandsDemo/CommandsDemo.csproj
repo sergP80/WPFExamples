@@ -103,5 +103,17 @@
   <ItemGroup>
     <Resource Include="Close_16x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="NewFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cut_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Copy_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Paste_16x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
