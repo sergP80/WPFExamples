@@ -1,0 +1,53 @@
+﻿<Window x:Class="CommandsDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CommandsDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Window.CommandBindings>
+        <CommandBinding x:Name="openCmd" Command="ApplicationCommands.Open" Executed="openCmd_Executed"/>
+        <CommandBinding x:Name="saveCmd" Command="ApplicationCommands.Save" Executed="saveCmd_Executed" CanExecute="saveCmd_CanExecute"/>
+        <CommandBinding x:Name="exitCmd" Command="ApplicationCommands.Close" Executed="exitCmd_Executed" />
+    </Window.CommandBindings>
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem x:Name="miFile" Header="File">
+                <MenuItem x:Name="miFileNew" Header="New"/>
+                <MenuItem x:Name="miFileOpen" Header="Open..." Command="ApplicationCommands.Open" />
+                <MenuItem x:Name="miFileSave" Header="Save..." Command="ApplicationCommands.Save"/>
+                <Separator/>
+                <MenuItem x:Name="miFileExit" Header="Exit" Command="ApplicationCommands.Close"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Paste"/>
+            </MenuItem>
+        </Menu>
+        
+        <ToolBar DockPanel.Dock="Top">
+            <Button Command="ApplicationCommands.Open">
+                <Image Source="OpenFile_16x.png" Height="24" Width="24"></Image>
+            </Button>
+            <Separator/>
+            <Button Command="ApplicationCommands.Save">
+                <Image Source="Save_16x.png" Height="24" Width="24"></Image>
+            </Button>
+            <Button Command="ApplicationCommands.Close">
+                <Image Source="Close_16x.png" Height="24" Width="24"></Image>
+            </Button>
+        </ToolBar>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock x:Name="txbPosition"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <TextBox x:Name="txtArea" AcceptsReturn="True" SelectionChanged="TextBox_SelectionChanged" KeyUp="txtArea_KeyUp"/>
+
+    </DockPanel>
+</Window>

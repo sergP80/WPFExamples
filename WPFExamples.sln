@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormThreading1", "WinFor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBinding1", "WpfBinding1\WpfBinding1.csproj", "{E80CDEC2-32EC-4C02-8D42-FF64227D414E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsDemo", "CommandsDemo\CommandsDemo.csproj", "{5B111179-5900-48B4-83CF-282A3B3C01EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{E80CDEC2-32EC-4C02-8D42-FF64227D414E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E80CDEC2-32EC-4C02-8D42-FF64227D414E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E80CDEC2-32EC-4C02-8D42-FF64227D414E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B111179-5900-48B4-83CF-282A3B3C01EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B111179-5900-48B4-83CF-282A3B3C01EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B111179-5900-48B4-83CF-282A3B3C01EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B111179-5900-48B4-83CF-282A3B3C01EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
