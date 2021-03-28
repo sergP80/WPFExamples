@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FamFamFam.Flags.Wpf, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FamFamFam.Flags.Wpf.1.2.1\lib\net35\FamFamFam.Flags.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -55,6 +58,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Lang\lang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Lang\lang.ru-RU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +97,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -95,25 +107,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="OpenFile_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Save_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Close_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="NewFile_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Cut_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Copy_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Paste_16x.png" />
+    <ProjectReference Include="..\SharedResources\SharedResources.csproj">
+      <Project>{5bb239bb-65b1-4bff-8c68-9946cdcd810e}</Project>
+      <Name>SharedResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

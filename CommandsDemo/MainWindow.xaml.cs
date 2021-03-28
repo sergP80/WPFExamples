@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using SharedResources;
 
 namespace CommandsDemo
 {
@@ -22,11 +25,76 @@ namespace CommandsDemo
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool isModified = false;
-
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = this;
+        }
+
+        public ObservableCollection<LangItemViewModel> SupportedLanguages { get; } = new ObservableCollection<LangItemViewModel>();
+
+        private bool isModified = false;
+        private string currentFile = "";
+
+        string CurrentFile
+        {
+            get
+            {
+                return this.currentFile;
+            }
+            set
+            {
+                this.currentFile = value;
+                this.txbCurrentFile.Text = value;
+            }
+        }
+
+        bool HasSavedFile
+        {
+            get
+            {
+                return this.currentFile.Length > 0;
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            SupportedLanguages.Add(new LangItemViewModel(true, "en-US", new RelayCommand<string>(ChangeLocale)));
+            SupportedLanguages.Add(new LangItemViewModel("ru-RU", new RelayCommand<string>(ChangeLocale)));
+            SupportedLanguages.Add(new LangItemViewModel("uk-UA", new RelayCommand<string>(ChangeLocale)));
+        }
+
+        private void ChangeLocale(String localeCode)
+        {
+            ResourceDictionary dict = new ResourceDictionary();
+            try
+            {
+                dict.Source = new Uri(String.Format("Lang/lang.{0}.xaml", localeCode), UriKind.Relative);
+                
+            }
+            catch (Exception ex)
+            {
+                dict.Source = new Uri("Lang/lang.xaml", UriKind.Relative);
+            }
+           
+        }
+
+        private void setupLocaleResources(ResourceDictionary resource)
+        {
+            ResourceDictionary currentDict = (
+                from d in Application.Current.Resources.MergedDictionaries
+                where d.Source != null && d.Source.OriginalString.StartsWith("Lang/lang.")
+                select d).First();
+
+            if (currentDict != null)
+            {
+                int idx = Application.Current.Resources.MergedDictionaries.IndexOf(currentDict);
+                Application.Current.Resources.MergedDictionaries.Remove(currentDict);
+                Application.Current.Resources.MergedDictionaries.Insert(idx, resource);
+            } else
+            {
+                Application.Current.Resources.MergedDictionaries.Add(resource);
+            }
         }
 
         private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
@@ -46,6 +114,7 @@ namespace CommandsDemo
             using(var reader = new StreamReader(fileName))
             {
               txtArea.Text = reader.ReadToEnd();
+              CurrentFile = fileName;
             }
         }
         private void saveFile(String fileName)
@@ -53,6 +122,7 @@ namespace CommandsDemo
             using (var writer = new StreamWriter(fileName))
             {
                 writer.WriteLine(txtArea.Text);
+                CurrentFile = fileName;
             }
         }
 
@@ -69,6 +139,18 @@ namespace CommandsDemo
         }
 
         private void saveCmd_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (HasSavedFile)
+            {
+                saveFile(CurrentFile);
+                this.isModified = false;
+            }
+            else {
+                saveAsCmd_Executed(sender, e);
+            }
+        }
+
+        private void saveAsCmd_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             SaveFileDialog svd = new SaveFileDialog();
             var showResult = svd.ShowDialog();

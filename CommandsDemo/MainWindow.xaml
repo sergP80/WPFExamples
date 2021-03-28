@@ -4,90 +4,116 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommandsDemo"
+        xmlns:shared="clr-namespace:SharedResources;assembly=SharedResources"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{DynamicResource rk_mainWindowTitle}" Height="450" Width="800" Loaded="Window_Loaded">
 
     <Window.CommandBindings>
         <CommandBinding x:Name="newCmd" Command="ApplicationCommands.New" Executed="newCmd_Executed"/>
         <CommandBinding x:Name="openCmd" Command="ApplicationCommands.Open" Executed="openCmd_Executed"/>
         <CommandBinding x:Name="saveCmd" Command="ApplicationCommands.Save" Executed="saveCmd_Executed" CanExecute="saveCmd_CanExecute"/>
-        <CommandBinding x:Name="exitCmd" Command="ApplicationCommands.Close" Executed="exitCmd_Executed" />
+        <CommandBinding x:Name="saveAsCmd" Command="ApplicationCommands.SaveAs" Executed="saveAsCmd_Executed"/>
+        <CommandBinding x:Name="exitCmd" Command="shared:SharedCommands.Exit" Executed="exitCmd_Executed" />
     </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Command="ApplicationCommands.Open" Key="O" Modifiers="Ctrl+Shift"/>
+    </Window.InputBindings>
     
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem x:Name="miFile" Header="File">
-                <MenuItem x:Name="miFileNew" Header="New" Command="ApplicationCommands.New">
+            <MenuItem x:Name="miFile" Header="{DynamicResource rk_mainMenuFile}">
+                <MenuItem x:Name="miFileNew" Header="{DynamicResource rk_mainMenuFileNew}" Command="ApplicationCommands.New">
                     <MenuItem.Icon>
-                        <Image Source="NewFile_16x.png"></Image>
+                        <Image Source="pack://application:,,,/SharedResources;Component/Icons/NewFile_16x.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="miFileOpen" Header="Open..." Command="ApplicationCommands.Open">
+
+                <MenuItem x:Name="miFileOpen" Header="{DynamicResource rk_mainMenuFileOpen}" Command="ApplicationCommands.Open" InputGestureText="Crtl+Shif+O">
                     <MenuItem.Icon>
-                        <Image Source="OpenFile_16x.png"></Image>
+                        <Image Source="pack://application:,,,/SharedResources;Component/Icons/OpenFile_16x.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="miFileSave" Header="Save..." Command="ApplicationCommands.Save">
+
+                <MenuItem x:Name="miFileSave" Header="{DynamicResource rk_mainMenuFileSave}" Command="ApplicationCommands.Save">
                     <MenuItem.Icon>
-                        <Image Source="Save_16x.png"></Image>
+                        <Image Source="pack://application:,,,/SharedResources;Component/Icons/Save_16x.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
+
+                <MenuItem x:Name="miFileSaveAs" Header="{DynamicResource rk_mainMenuFileSaveAs}" Command="ApplicationCommands.SaveAs"/>
+                
                 <Separator/>
-                <MenuItem x:Name="miFileExit" Header="Exit" Command="ApplicationCommands.Close">
+
+                <MenuItem x:Name="miFileExit" Header="{DynamicResource rk_mainMenuFileExit}" Command="shared:SharedCommands.Exit">
                     <MenuItem.Icon>
-                        <Image Source="Close_16x.png"></Image>
+                        <Image Source="pack://application:,,,/SharedResources;Component/Icons/Close_16x.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Cut" Command="ApplicationCommands.Cut">
+            <MenuItem Header="{DynamicResource rk_mainMenuEdit}">
+                <MenuItem Header="{DynamicResource rk_mainMenuEditCut}" Command="ApplicationCommands.Cut">
                     <MenuItem.Icon>
-                        <Image Source="Cut_16x.png"></Image>
+                        <Image Source="pack://application:,,,/SharedResources;Component/Icons/Cut_16x.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Copy"  Command="ApplicationCommands.Copy">
+
+                <MenuItem Header="{DynamicResource rk_mainMenuEditCopy}" Command="ApplicationCommands.Copy">
                     <MenuItem.Icon>
-                        <Image Source="Copy_16x.png"></Image>
+                        <Image Source="pack://application:,,,/SharedResources;Component/Icons/Copy_16x.png"></Image>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Paste"  Command="ApplicationCommands.Paste">
+
+                <MenuItem Header="{DynamicResource rk_mainMenuEditPaste}" Command="ApplicationCommands.Paste">
                     <MenuItem.Icon>
-                        <Image Source="Paste_16x.png"></Image>
+                        <Image Source="pack://application:,,,/SharedResources;Component/Icons/Paste_16x.png"></Image>
                     </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="{DynamicResource rk_mainMenuEditLanguages}" ItemsSource="{Binding SupportedLanguages}">
+                    <MenuItem.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton 
+                                Content="{Binding Path=Culture.DisplayName}"
+                                IsChecked="{Binding Path=Active}"
+                                Command="{Binding Path=Command}"
+                                CommandParameter="{Binding Path=Culture.Name}"
+                                GroupName="LanguageGroup" />
+                        </DataTemplate>
+                    </MenuItem.ItemTemplate>
                 </MenuItem>
             </MenuItem>
         </Menu>
 
-
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
                 <Button Command="ApplicationCommands.New">
-                    <Image Source="NewFile_16x.png" Height="24" Width="24"></Image>
+                    <Image Source="pack://application:,,,/SharedResources;Component/Icons/NewFile_16x.png" Height="24" Width="24"></Image>
                 </Button>
                 <Separator/>
                 <Button Command="ApplicationCommands.Open">
-                    <Image Source="OpenFile_16x.png" Height="24" Width="24"></Image>
+                    <Image Source="pack://application:,,,/SharedResources;Component/Icons/OpenFile_16x.png" Height="24" Width="24"></Image>
                 </Button>
                 <Separator/>
                 <Button Command="ApplicationCommands.Save">
-                    <Image Source="Save_16x.png" Height="24" Width="24"></Image>
+                    <Image Source="pack://application:,,,/SharedResources;Component/Icons/Save_16x.png" Height="24" Width="24"></Image>
                 </Button>
                 <Separator/>
                 <Button Command="ApplicationCommands.Close">
-                    <Image Source="Close_16x.png" Height="24" Width="24"></Image>
+                    <Image Source="pack://application:,,,/SharedResources;Component/Icons/Close_16x.png" Height="24" Width="24"></Image>
                 </Button>
             </ToolBar>
             <ToolBar>
                 <Button Command="ApplicationCommands.Cut">
-                    <Image Source="Cut_16x.png" Height="24" Width="24"></Image>
+                    <Image Source="pack://application:,,,/SharedResources;Component/Icons/Cut_16x.png" Height="24" Width="24"></Image>
                 </Button>
                 <Separator/>
                 <Button Command="ApplicationCommands.Copy">
-                    <Image Source="Copy_16x.png" Height="24" Width="24"></Image>
+                    <Image Source="pack://application:,,,/SharedResources;Component/Icons/Copy_16x.png" Height="24" Width="24"></Image>
                 </Button>
                 <Separator/>
                 <Button Command="ApplicationCommands.Paste">
-                    <Image Source="Paste_16x.png" Height="24" Width="24"></Image>
+                    <Image Source="pack://application:,,,/SharedResources;Component/Icons/Paste_16x.png" Height="24" Width="24"></Image>
                 </Button>
                 <Separator/>
             </ToolBar>
@@ -95,7 +121,10 @@
 
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem>
-                <TextBlock x:Name="txbPosition"/>
+                <TextBlock x:Name="txbPosition" />
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock x:Name="txbCurrentFile"/>
             </StatusBarItem>
         </StatusBar>
 

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBinding1", "WpfBinding1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsDemo", "CommandsDemo\CommandsDemo.csproj", "{5B111179-5900-48B4-83CF-282A3B3C01EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedResources", "SharedResources\SharedResources.csproj", "{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5B111179-5900-48B4-83CF-282A3B3C01EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B111179-5900-48B4-83CF-282A3B3C01EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B111179-5900-48B4-83CF-282A3B3C01EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

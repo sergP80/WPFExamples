@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="rk_mainWindowTitle">Простой текстовый редактор</v:String>
+    <v:String x:Key="rk_mainMenuFile">Файл</v:String>
+    <v:String x:Key="rk_mainMenuFileNew">Новый</v:String>
+    <v:String x:Key="rk_mainMenuFileOpen">Открыть...</v:String>
+    <v:String x:Key="rk_mainMenuFileSave">Сохранить</v:String>
+    <v:String x:Key="rk_mainMenuFileSaveAs">Сохранить как...</v:String>
+    <v:String x:Key="rk_mainMenuFileExit">Выйти</v:String>
+
+    <v:String x:Key="rk_mainMenuEdit">Правка</v:String>
+    <v:String x:Key="rk_mainMenuEditCut">Вырезать</v:String>
+    <v:String x:Key="rk_mainMenuEditCopy">Копировать</v:String>
+    <v:String x:Key="rk_mainMenuEditPaste">Вставить</v:String>
+    <v:String x:Key="rk_mainMenuEditLanguages">Языки интерфейса</v:String>
+</ResourceDictionary>
