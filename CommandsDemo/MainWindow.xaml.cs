@@ -59,9 +59,10 @@ namespace CommandsDemo
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            SupportedLanguages.Add(new LangItemViewModel(true, "en-US", new RelayCommand<string>(ChangeLocale)));
-            SupportedLanguages.Add(new LangItemViewModel("ru-RU", new RelayCommand<string>(ChangeLocale)));
-            SupportedLanguages.Add(new LangItemViewModel("uk-UA", new RelayCommand<string>(ChangeLocale)));
+            var cmd = new RelayCommand<string>(ChangeLocale);
+            SupportedLanguages.Add(new LangItemViewModel(true, "en-US", cmd));
+            SupportedLanguages.Add(new LangItemViewModel("ru-RU", cmd));
+            SupportedLanguages.Add(new LangItemViewModel("uk-UA", cmd));
         }
 
         private void ChangeLocale(String localeCode)
@@ -76,7 +77,8 @@ namespace CommandsDemo
             {
                 dict.Source = new Uri("Lang/lang.xaml", UriKind.Relative);
             }
-           
+
+            setupLocaleResources(dict);
         }
 
         private void setupLocaleResources(ResourceDictionary resource)
