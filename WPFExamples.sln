@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsDemo", "CommandsDem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedResources", "SharedResources\SharedResources.csproj", "{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleImageViewer", "SimpleImageViewer\SimpleImageViewer.csproj", "{04B144FF-6E52-4C06-8457-9DD62FD886FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconList", "IconList\IconList.csproj", "{75A2A4D1-1B41-43E5-8A7A-6F4880B0C5D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BB239BB-65B1-4BFF-8C68-9946CDCD810E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B144FF-6E52-4C06-8457-9DD62FD886FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B144FF-6E52-4C06-8457-9DD62FD886FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B144FF-6E52-4C06-8457-9DD62FD886FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B144FF-6E52-4C06-8457-9DD62FD886FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A2A4D1-1B41-43E5-8A7A-6F4880B0C5D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A2A4D1-1B41-43E5-8A7A-6F4880B0C5D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A2A4D1-1B41-43E5-8A7A-6F4880B0C5D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A2A4D1-1B41-43E5-8A7A-6F4880B0C5D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

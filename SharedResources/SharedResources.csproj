@@ -44,6 +44,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractListItemDataViewModel.cs" />
     <Compile Include="SharedCommands.cs" />
     <Compile Include="LangItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,49 @@
+﻿<Window x:Class="IconList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IconList"
+        mc:Ignorable="d"
+        Title="Image icon list" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox x:Name="cbxSeasons" 
+                  ItemsSource="{Binding SeasonViewModel.Data}" 
+                  SelectedItem="{Binding Path=SelectedClothes,Mode=TwoWay}" 
+                  Margin="10,36,10.4,335">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="32px">
+                        <TextBlock Text="{Binding Path=Label}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox x:Name="cbxSeasonClothes" 
+                  ItemsSource="{Binding ElementName=cbxSeasons,Path=SelectedItem.Data}"
+                  SelectedItem="{Binding Path=Data}"
+                  Margin="10,141,10.4,231" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Height="32px">
+                        <TextBlock Text="{Binding Path=Label}"/>
+                        <Image Source="{Binding Path=Data}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ScrollViewer Grid.Column="1">
+            <Image Source="{Binding ElementName=cbxSeasonClothes,Path=SelectedItem.Data}" />
+        </ScrollViewer>
+    </Grid>
+</Window>
