@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AbstractListItemDataViewModel.cs" />
     <Compile Include="AbstractObservableModel.cs" />
+    <Compile Include="ImageSourceFromUriConverter.cs" />
     <Compile Include="SharedCommands.cs" />
     <Compile Include="LangItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

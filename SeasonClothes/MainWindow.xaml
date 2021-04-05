@@ -1,11 +1,16 @@
-﻿<Window x:Class="IconList.MainWindow"
+﻿<Window x:Class="SeasonClothes.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:IconList"
+        xmlns:local="clr-namespace:SeasonClothes"
         mc:Ignorable="d"
-        Title="Image icon list" Height="450" Width="800">
+        Title="Image icon list" Height="450" Width="800" Loaded="Window_Loaded">
+    
+    <Window.DataContext>
+        <local:SeasonViewModel x:Name="SeasonViewModel"/>
+    </Window.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -16,7 +21,7 @@
         </Grid.ColumnDefinitions>
 
         <ComboBox x:Name="cbxSeasons" 
-                  ItemsSource="{Binding SeasonViewModel.Data}" 
+                  ItemsSource="{Binding Data}" 
                   SelectedItem="{Binding Path=SelectedClothes,Mode=TwoWay}" 
                   Margin="10,36,10.4,335">
             <ComboBox.ItemTemplate>

@@ -1,14 +1,12 @@
 ﻿using SharedResources;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace AutoViewer
 {
+    [Serializable()]
     public class AutoItemModel: AbstractObservableModel
     {
         private string model;
@@ -56,17 +54,12 @@ namespace AutoViewer
             }
         }
 
-        private ImageSource image;
-        public ImageSource Image
+        private string imageUri;
+        public string ImageUri
         {
-            get
-            {
-                return image;
-            }
-
-            set
-            {
-                image = value;
+            get => imageUri;
+            set {
+                imageUri = value;
                 OnPropertyChanged();
             }
         }
@@ -112,6 +105,24 @@ namespace AutoViewer
         public void Clear()
         {
             Items.Clear();
+        }
+
+        public void Save(string path)
+        {
+            using(var streamWriter = new StreamWriter(path))
+            {
+                var serializer = new XmlSerializer(typeof(ObservableCollection<AutoItemModel>));
+                serializer.Serialize(streamWriter, Items);
+            }
+        }
+
+        public void Load(string path)
+        {
+            using (var streamReader = new StreamReader(path))
+            {
+                var serializer = new XmlSerializer(typeof(ObservableCollection<AutoItemModel>));
+                Items = (ObservableCollection<AutoItemModel>)serializer.Deserialize(streamReader);
+            }
         }
     }
 }

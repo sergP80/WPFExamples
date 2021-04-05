@@ -21,7 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace IconList
+namespace SeasonClothes
 {
     public class SeasonItemClothesViewModel : AbstractListItemDataViewModel<ImageSource>
     {}
@@ -108,9 +108,7 @@ namespace IconList
             var pathTemplate = string.Format("pack://application:,,,{0}", ImagePathPattern);
             return string.Format(pathTemplate, season, image, ext);
         }
-
-        public SeasonViewModel SeasonViewModel { get; set; } = new SeasonViewModel();
-        
+  
         private void InitData()
         {
             string ext = "png";
@@ -142,10 +140,11 @@ namespace IconList
         public MainWindow()
         {
             InitializeComponent();
-            
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
             InitData();
-            
-            DataContext = this;
         }
     }
 }

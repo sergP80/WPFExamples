@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAutoItemModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AutoItemModel>
+    <Model>Ford 22</Model>
+    <MaxVelocity>320</MaxVelocity>
+    <Price>20000</Price>
+    <ImageUri>pack://application:,,,/Resources/autos/ford.jpg</ImageUri>
+  </AutoItemModel>
+  <AutoItemModel>
+    <Model>Hyuinday Santa Fe</Model>
+    <MaxVelocity>245</MaxVelocity>
+    <Price>24000</Price>
+    <ImageUri>https://31t433rm3n.a.trbcdn.net/i/files2/auto/2020/10/Hyundai_Santa_Fe_2021_2.jpg</ImageUri>
+  </AutoItemModel>
+  <AutoItemModel>
+    <Model>Mazda CX 5</Model>
+    <MaxVelocity>280</MaxVelocity>
+    <Price>18000</Price>
+    <ImageUri>https://i0.wp.com/itc.ua/wp-content/uploads/2019/07/foto-zaglav-7.jpg?w=1200&amp;quality=100&amp;strip=all&amp;ssl=1</ImageUri>
+  </AutoItemModel>
+  <AutoItemModel>
+    <Model>Range Rover</Model>
+    <MaxVelocity>367</MaxVelocity>
+    <Price>46000</Price>
+    <ImageUri>pack://application:,,,/Resources/autos/range-rover.jpg</ImageUri>
+  </AutoItemModel>
+</ArrayOfAutoItemModel>
