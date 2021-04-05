@@ -11,15 +11,6 @@ using System.Windows.Input;
 namespace SharedResources
 {
 
-    public abstract class AbstractObservableModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
     public class LangItemViewModel: AbstractObservableModel
     {
         public LangItemViewModel(string langCode, ICommand command) : this(false, langCode, command) { }

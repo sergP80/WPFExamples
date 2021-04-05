@@ -9,7 +9,7 @@ namespace SharedResources
     public abstract class AbstractListItemDataViewModel<T> : AbstractObservableModel
     {
         private string label;
-        public string Label
+        public virtual string Label
         {
             get
             {
@@ -23,7 +23,7 @@ namespace SharedResources
         }
 
         private T data;
-        public T Data
+        public virtual T Data
         {
             get
             {

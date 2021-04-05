@@ -1,0 +1,53 @@
+﻿<Window x:Class="AutoViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoViewer"
+        mc:Ignorable="d"
+        Title="Auto viewer" Height="450" Width="800" Loaded="Window_Loaded">
+    
+    <Window.DataContext >
+        <local:AutoViewModel x:Name="MainViewModel"/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ComboBox x:Name="cbxAllAutos"
+                  ItemsSource="{Binding Items}"
+                  SelectedItem="{Binding SelectedAuto}"
+                  Margin="10,28,10.4,337">
+
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{Binding Path=Image}" Width="64"/>
+                        <TextBlock Text="{Binding Path=Model}" FontSize="16" FontFamily="Werdana"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="0.7*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer>
+                <Image Source="{Binding SelectedAuto.Image}"/>
+            </ScrollViewer>
+
+            <StackPanel Grid.Row="1">
+                <TextBox Text="{Binding ElementName=cbxAllAutos, Path=SelectedItem.Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Text="{Binding SelectedAuto.MaxVelocity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Text="{Binding ElementName=cbxAllAutos, Path=SelectedItem.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
