@@ -21,10 +21,29 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5,10,10,5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+        
         <Style x:Key="TextDetailStyle" TargetType="TextBox">
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="5,10,10,5"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontFamily" Value="Werdana"/>
+            <Setter Property="Foreground" Value="Purple"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedAuto.MaxVelocity}" Value="250">
+                    <Setter Property="Background" Value="LawnGreen"/>
+                </DataTrigger>
+                
+            </Style.Triggers>
         </Style>
+        
         <Style x:Key="CondtionalVisibleButtonStyle" TargetType="Button">
             <Setter Property="Visibility" Value="Hidden"/>
             <Style.Triggers>
@@ -94,24 +113,32 @@
             <Grid.RowDefinitions/>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.7*"/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <ComboBox x:Name="cbxAllAutos"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ComboBox x:Name="cbxAllAutos"
                   ItemsSource="{Binding Items}"
                   SelectedItem="{Binding SelectedAuto}"
                   ItemContainerStyle="{StaticResource ComboboxItemViewStyle}"
-                  Margin="10,28,10.4,403.8">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding Path=ImageUri,Converter={StaticResource ImageSourceToUriConverter}}" Width="64" Margin="5,5,5,5"/>
-                            <TextBlock Text="{Binding Path=Model}" FontSize="16" FontFamily="Werdana" Margin="0,5,0,5"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+                  Margin="15,30">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Path=ImageUri,Converter={StaticResource ImageSourceToUriConverter}}" Width="64" Margin="5,5,5,5"/>
+                                <TextBlock Text="{Binding Path=Model}" FontSize="16" FontFamily="Werdana" Margin="0,5,0,5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
+            </Grid>
+            
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -119,7 +146,7 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer>
-                    <Border BorderThickness="2" BorderBrush="Aquamarine">
+                    <Border BorderThickness="2" BorderBrush="Plum">
                         <Image Source="{Binding SelectedAuto.ImageUri,Converter={StaticResource ImageSourceToUriConverter}}"/>
                     </Border>
                 </ScrollViewer>
@@ -129,12 +156,33 @@
                         <ColumnDefinition />
                         <ColumnDefinition Width="0.2*"/>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Margin="4,4,4,4">
-                        <TextBox x:Name="txbUri" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedAuto.ImageUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBox x:Name="txbModel" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedAuto.Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBox x:Name="txbMaxVelocity" Style="{StaticResource TextDetailStyle}" Text="{Binding SelectedAuto.MaxVelocity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <TextBox x:Name="txbMaxPrice" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedAuto.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                    </StackPanel>
+
+                    <Grid Margin="4,4,4,4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="1" x:Name="txbUri" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedAuto.ImageUri, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBlock Text="Image" />
+
+                        <TextBlock Grid.Row="1" Text="Model"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txbModel" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedAuto.Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Grid.Row="2" Text="Max velocity"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txbMaxVelocity" Style="{StaticResource TextDetailStyle}" Text="{Binding SelectedAuto.MaxVelocity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <TextBlock Grid.Row="3" Text="Max price"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txbMaxPrice" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedAuto.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    </Grid>
+                    
                     <Grid Grid.Column="1">
                         <Button Content="+" 
                                 Style="{StaticResource CondtionalVisibleButtonStyle}"
