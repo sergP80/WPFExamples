@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="AbstractListItemDataViewModel.cs" />
     <Compile Include="AbstractObservableModel.cs" />
-    <Compile Include="ImageSourceFromUriConverter.cs" />
+    <Compile Include="Converter.cs" />
     <Compile Include="SharedCommands.cs" />
     <Compile Include="LangItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +71,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\Save_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Add_16x.png" />
+    <Resource Include="Icons\Remove_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\StubCar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\app_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\app_icon2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

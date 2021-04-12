@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="rk_mainWindowTitle">Auto view manager</v:String>
+    <v:String x:Key="rk_mainMenuFile">File</v:String>
+    <v:String x:Key="rk_mainMenuFileOpen">Open...</v:String>
+    <v:String x:Key="rk_mainMenuFileSave">Save</v:String>
+    <v:String x:Key="rk_mainMenuFileExit">Exit</v:String>
+ 
+    <v:String x:Key="rk_mainMenuEdit">Edit</v:String>
+    <v:String x:Key="rk_mainMenuEditNewItem">New item</v:String>
+    <v:String x:Key="rk_mainMenuEditRemoveItem">Remove item</v:String>
+    <v:String x:Key="rk_mainMenuEditLanguages">Interface languages</v:String>
+
+    <v:String x:Key="rk_detailsImage">Image</v:String>
+    <v:String x:Key="rk_detailsModel">Model</v:String>
+    <v:String x:Key="rk_detailsMaxVelocity">Max velocity</v:String>
+    <v:String x:Key="rk_detailsMaxPrice">Max price</v:String>
+</ResourceDictionary>

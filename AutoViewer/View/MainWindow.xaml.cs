@@ -43,7 +43,7 @@ namespace AutoViewer
 
         private void cmdSave_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = MainViewModel.Items.Count > 0;
+            e.CanExecute = MainViewModel.IsNotEmpty;
         }
 
         private void cmdExit_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
@@ -51,5 +51,19 @@ namespace AutoViewer
             Close();
         }
 
+        private void cmdAddNewItem_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            MainViewModel.Add();
+        }
+
+        private void cmdRemoveItem_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            MainViewModel.RemoveSelected();
+        }
+
+        private void cmdRemoveItem_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = MainViewModel.IsNotEmpty;
+        }
     }
 }

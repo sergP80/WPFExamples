@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace SharedResources
@@ -58,6 +54,28 @@ namespace SharedResources
                 {
                     new KeyGesture(Key.F10, ModifierKeys.Control),
                     new KeyGesture(Key.Escape)
+                }
+            );
+        
+        public static RoutedUICommand AddNewItem = new RoutedUICommand
+            (
+                "New item",
+                "NewItem",
+                typeof(SharedCommands),
+                new InputGestureCollection()
+                {
+                    new KeyGesture(Key.F5, ModifierKeys.Shift)
+                }
+            );
+
+        public static RoutedUICommand RemoveItem = new RoutedUICommand
+            (
+                "Remove item",
+                "RemoveItem",
+                typeof(SharedCommands),
+                new InputGestureCollection()
+                {
+                    new KeyGesture(Key.F4, ModifierKeys.Shift)
                 }
             );
     }

@@ -56,6 +56,9 @@ namespace SharedResources
         }
 
         private ICommand command;
+        private bool v1;
+        private string v2;
+        private string v;
 
         public ICommand Command
         {
