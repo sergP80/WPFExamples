@@ -2,16 +2,13 @@
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace AutoViewer
 {
-    
+
     public class MainViewModel: AbstractObservableModel
     {
         public ImageSource ApplicationIcon

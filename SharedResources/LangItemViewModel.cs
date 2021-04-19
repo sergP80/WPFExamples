@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows.Input;
 
 namespace SharedResources
@@ -56,9 +49,6 @@ namespace SharedResources
         }
 
         private ICommand command;
-        private bool v1;
-        private string v2;
-        private string v;
 
         public ICommand Command
         {
