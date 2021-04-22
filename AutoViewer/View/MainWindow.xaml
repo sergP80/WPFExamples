@@ -59,21 +59,22 @@
                 </MenuItem>
                 <Separator/>
                 <MenuItem Header="{DynamicResource rk_mainMenuEditLanguages}" ItemsSource="{Binding Localization.Items}">
-                    <MenuItem.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Margin="2,0,4,0">
-                                    <Image Source="{Binding Path=CountryCode,Converter={StaticResource CountryIdToFlagImageSourceConverter}}"/>
-                                </Border>
-                                <RadioButton 
-                                    Content="{Binding Path=NativeLanguageName}"
-                                    IsChecked="{Binding Path=Active}"
-                                    Command="{Binding Path=Command}"
-                                    CommandParameter="{Binding}"
-                                    GroupName="LanguageGroup" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </MenuItem.ItemTemplate>
+                    <MenuItem.Resources>
+                        <Image Source="{Binding Path=CountryCode,Converter={StaticResource CountryIdToFlagImageSourceConverter}}" x:Key="IconImage" x:Shared="False"/>
+                    </MenuItem.Resources>
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Icon" Value="{StaticResource IconImage}"/>
+                            <Setter Property="Header" Value="{Binding Path=NativeLanguageName}"/>
+                            <Setter Property="Command" Value="{Binding Path=Command}"/>
+                            <Setter Property="CommandParameter" Value="{Binding}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Active}" Value="True">
+                                    <Setter Property="FontFamily" Value="Bold"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
                 </MenuItem>
             </MenuItem>
         </Menu>
