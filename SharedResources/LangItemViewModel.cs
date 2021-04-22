@@ -6,12 +6,14 @@ namespace SharedResources
 
     public class LangItemViewModel: AbstractObservableModel
     {
+        private CultureInfo culture;
+
         public LangItemViewModel(string langCode, ICommand command) : this(false, langCode, command) { }
 
         public LangItemViewModel(bool active, string langCode, ICommand commad)
         {
             Active  = active;
-            Culture = new CultureInfo(langCode);
+            culture = new CultureInfo(langCode);
             Command  = commad;
         }
 
@@ -31,23 +33,6 @@ namespace SharedResources
             } 
         }
 
-        private CultureInfo culture;
-
-        public CultureInfo Culture { 
-            get
-            {
-                return culture;
-            }
-            set
-            {
-                if (value != null && !value.Equals(culture))
-                {
-                    culture = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
         private ICommand command;
 
         public ICommand Command
@@ -62,6 +47,33 @@ namespace SharedResources
                 command = value;
                 OnPropertyChanged();
             }
+        }
+
+        public string CountryCode
+        {
+            get
+            {
+                return culture.IetfLanguageTag.Split(new char[] { '-'})[1];
+            }
+            
+        }
+
+        public string NativeLanguageName
+        {
+            get
+            {
+                return culture.NativeName;
+            }
+
+        }
+
+        public string Name
+        {
+            get
+            {
+                return culture.Name;
+            }
+
         }
     }
 }

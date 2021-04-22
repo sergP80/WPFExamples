@@ -16,7 +16,7 @@
     <Window.Resources>
         <ResourceDictionary Source="../Resources/dicts/MainWindowResources.xaml"/>
     </Window.Resources>
-    
+
     <Window.CommandBindings>
         <CommandBinding x:Name="cmdOpen" Command="ApplicationCommands.Open" Executed="cmdOpen_Executed"/>
         <CommandBinding x:Name="cmdSave" Command="ApplicationCommands.Save" Executed="cmdSave_Executed" CanExecute="cmdSave_CanExecute"/>
@@ -61,12 +61,17 @@
                 <MenuItem Header="{DynamicResource rk_mainMenuEditLanguages}" ItemsSource="{Binding Localization.Items}">
                     <MenuItem.ItemTemplate>
                         <DataTemplate>
-                            <RadioButton 
-                                Content="{Binding Path=Culture.DisplayName}"
-                                IsChecked="{Binding Path=Active}"
-                                Command="{Binding Path=Command}"
-                                CommandParameter="{Binding}"
-                                GroupName="LanguageGroup" />
+                            <StackPanel Orientation="Horizontal">
+                                <Border Margin="2,0,4,0">
+                                    <Image Source="{Binding Path=CountryCode,Converter={StaticResource CountryIdToFlagImageSourceConverter}}"/>
+                                </Border>
+                                <RadioButton 
+                                    Content="{Binding Path=NativeLanguageName}"
+                                    IsChecked="{Binding Path=Active}"
+                                    Command="{Binding Path=Command}"
+                                    CommandParameter="{Binding}"
+                                    GroupName="LanguageGroup" />
+                            </StackPanel>
                         </DataTemplate>
                     </MenuItem.ItemTemplate>
                 </MenuItem>
@@ -103,7 +108,10 @@
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Path=Culture.DisplayName}">
+                                <Border Margin="2,0,4,0">
+                                    <Image Source="{Binding Path=CountryCode,Converter={StaticResource CountryIdToFlagImageSourceConverter}}"/>
+                                </Border>
+                                <TextBlock Text="{Binding Path=NativeLanguageName}">
                                     <TextBlock.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" Command="{Binding Command}" CommandParameter="{Binding}"/>
                                     </TextBlock.InputBindings>

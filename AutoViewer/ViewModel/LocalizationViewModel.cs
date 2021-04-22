@@ -71,7 +71,7 @@ namespace AutoViewer
             ResourceDictionary dict = new ResourceDictionary();
             try
             {
-                var locale = localeViewModel.Culture.Name;
+                var locale = localeViewModel.Name;
                 dict.Source = new Uri(String.Format("{0}/lang.{1}.xaml", LangResourcePrefix, locale), UriKind.Relative);
 
             }

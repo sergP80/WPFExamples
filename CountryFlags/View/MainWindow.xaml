@@ -34,6 +34,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding Path=CountryData.Iso2,Converter={StaticResource CountryIdToFlagImageSourceConverter}}" Width="32" Height="32"/>
                         <TextBlock Margin="7,0,0,0" Text="{Binding Path=CountryData.Name}" VerticalAlignment="Center"/>
+                        <TextBlock Margin="7,0,0,0" Text="{Binding Path=CountryData.Iso2}" VerticalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
