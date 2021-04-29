@@ -77,13 +77,13 @@ namespace SharedResources
             }
         }
 
-        public void Add(T data)
+        public void Add(T data, ObservableCollection<TreeItemViewModel<T>> children = null)
         {
             if (root == null)
             {
                 root = new ObservableCollection<TreeItemViewModel<T>>();
             }
-            root.Add(new TreeItemViewModel<T>() { Data = data });
+            root.Add(new TreeItemViewModel<T>() { Data = data, Children = children });
         }
     }
 }

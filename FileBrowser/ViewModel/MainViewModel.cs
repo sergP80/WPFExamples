@@ -1,6 +1,8 @@
 ﻿using SharedResources;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,7 @@ namespace FileBrowser.ViewModel
 
         private void InitLeftContent()
         {
-            System.IO.DriveInfo[] drives = System.IO.DriveInfo.GetDrives();
+            DriveInfo[] drives = DriveInfo.GetDrives();
             foreach (var driveInfo in drives)
             {
                 LeftContent.Add(
@@ -28,9 +30,30 @@ namespace FileBrowser.ViewModel
                         driveInfo.DriveType == System.IO.DriveType.Fixed,
                         driveInfo.DriveType == System.IO.DriveType.Removable,
                         driveInfo.DriveType == System.IO.DriveType.CDRom
-                    )
+                    ),
+                    GetDriveDirectories(driveInfo.Name)
                 );
             }
+        }
+
+        private ObservableCollection<TreeItemViewModel<FolderTreeItem>> GetDriveDirectories(string path)
+        {
+            ObservableCollection<TreeItemViewModel<FolderTreeItem>> result = new ObservableCollection<TreeItemViewModel<FolderTreeItem>>();
+            try
+            {
+                foreach (var dir in Directory.GetDirectories(path))
+                {
+                    result.Add(
+                        new TreeItemViewModel<FolderTreeItem>() { Data = new FolderTreeItem(dir) }
+                    );
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
+            return result;
         }
 
     }

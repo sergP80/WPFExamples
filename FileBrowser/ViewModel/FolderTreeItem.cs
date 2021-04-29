@@ -1,6 +1,7 @@
 ﻿using SharedResources;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,26 @@ namespace FileBrowser.ViewModel
         }
 
         public string Name { get; }
+        
+        public string ShortName
+        { 
+            get
+            {
+                var result = Path.GetFileName(Name);
+                if (result.Length == 0 || result == "")
+                {
+                    return Name;
+                }
+                return result;
+            }
+        }
+
         public bool IsFolder { get => !IsDrive && !IsFloppy && !IsCD;  }
+        
         public bool IsDrive { get; private set; }
+        
         public bool IsFloppy { get; private set; }
+        
         public bool IsCD { get; private set; }
         
         public bool Expanded { get; set; } = false;

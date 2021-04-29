@@ -41,10 +41,10 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <TreeView x:Name="tvFolders" ItemsSource="{Binding LeftContent.Root}">
                     <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="{Binding Path=Data.ImageUri}"/>
-                                <TextBlock Text="{Binding Path= Data.Name}" Margin="3,0,3,0"/>
+                                <TextBlock Text="{Binding Path= Data.ShortName}" Margin="3,0,3,0"/>
                             </StackPanel>
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
