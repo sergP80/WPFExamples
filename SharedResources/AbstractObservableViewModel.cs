@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SharedResources
 {
-    public abstract class AbstractObservableModel : INotifyPropertyChanged
+    public abstract class AbstractObservableViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

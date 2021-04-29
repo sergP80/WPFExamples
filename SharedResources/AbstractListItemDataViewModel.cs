@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SharedResources
 {
-    public abstract class AbstractListItemDataViewModel<T> : AbstractObservableModel
+    public abstract class AbstractListItemDataViewModel<T> : AbstractObservableViewModel
     {
         private string label;
         public virtual string Label

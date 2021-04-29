@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace AutoViewer
 {
-    public class LocalizationViewModel : AbstractObservableModel
+    public class LocalizationViewModel : AbstractObservableViewModel
     {
         private readonly string LangResourcePrefix = "Resources/langs";
 

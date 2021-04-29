@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace SharedResources
 {
 
-    public class LangItemViewModel: AbstractObservableModel
+    public class LangItemViewModel: AbstractObservableViewModel
     {
         private CultureInfo culture;
 

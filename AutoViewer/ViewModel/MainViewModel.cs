@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace AutoViewer
 {
 
-    public class MainViewModel: AbstractObservableModel
+    public class MainViewModel: AbstractObservableViewModel
     {
         public ImageSource ApplicationIcon
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace AutoViewer
 {
     [Serializable()]
-    public class AutoItemModel : AbstractObservableModel
+    public class AutoItemModel : AbstractObservableViewModel
     {
         private string model;
         public string Model
