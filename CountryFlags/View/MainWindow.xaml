@@ -28,7 +28,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <ComboBox Margin="10,10,10,10" ItemsSource="{Binding Items}">
+        <ComboBox Margin="10,10,10,10" ItemsSource="{Binding Path=Items}" SelectedItem="{Binding Path=Current}">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

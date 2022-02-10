@@ -39,6 +39,7 @@ namespace CountryFlags.ViewModel
                     }
                 );
             }
+            Current = Items[0];
         }
 
         private ObservableCollection<CountryCultureItemViewModel> items = new ObservableCollection<CountryCultureItemViewModel>();
@@ -49,6 +50,17 @@ namespace CountryFlags.ViewModel
             set
             {
                 items = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private CountryCultureItemViewModel current;
+        public CountryCultureItemViewModel Current
+        {
+            get => current;
+            set
+            {
+                current = value;
                 OnPropertyChanged();
             }
         }

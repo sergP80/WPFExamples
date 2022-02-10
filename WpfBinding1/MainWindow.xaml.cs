@@ -27,7 +27,7 @@ namespace WpfBinding1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            btn1.Content = "Updated 123";
+            //btn1.Content = "Updated 123";
             Car car1 = (Car)this.Resources["car1"];
             car1.Velocity = 450;
             car1.Model= "Beha";

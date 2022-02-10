@@ -22,30 +22,34 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <StackPanel Background="Bisque">
-                <TextBox Text="{Binding Source={StaticResource car1}, Path=Model, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox Text="{Binding Source={StaticResource car1}, Path=Year}"/>
-                <TextBox Text="{Binding Source={StaticResource car1}, Path=Velocity}"/>
-            </StackPanel>
+            
+            <GroupBox Header="Car 1" BorderThickness="5" BorderBrush="CadetBlue"  >
+                <StackPanel Background="Bisque">
+                    <TextBox Text="{Binding Source={StaticResource car1}, Path=Model, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding Source={StaticResource car1}, Path=Year}"/>
+                    <TextBox Text="{Binding Source={StaticResource car1}, Path=Velocity}"/>
+                </StackPanel>
+            </GroupBox>
 
-            <StackPanel Grid.Row="1" Background="Coral">
-                <TextBox Text="{Binding Source={StaticResource car1}, Path=Model, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
+            <GroupBox Grid.Row="1" Header="Car 2" BorderThickness="5" BorderBrush="DarkSeaGreen"  >
+                <StackPanel Background="Bisque">
+                    <TextBox Text="{Binding Source={StaticResource car2}, Path=Model, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding Source={StaticResource car2}, Path=Year}"/>
+                    <TextBox Text="{Binding Source={StaticResource car2}, Path=Velocity}"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="Car 1 View" BorderThickness="5" BorderBrush="AliceBlue"  >
+                <StackPanel Background="Bisque">
+                    <TextBlock Text="{Binding Source={StaticResource car1}, Path=Model}"/>
+                    <TextBlock Text="{Binding Source={StaticResource car1}, Path=Year}"/>
+                    <TextBlock Text="{Binding Source={StaticResource car1}, Path=Velocity}"/>
+                </StackPanel>
+            </GroupBox>
         </Grid>
-        
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBox x:Name="txtBox1" Text="Text..." ></TextBox>
-            <TextBox Grid.Row="1" x:Name="txtBox2" Text="{Binding ElementName=txtBox1, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Button Grid.Row="2" x:Name="btn1" Content="{Binding ElementName=txtBox1,Path=Text, Mode=OneWayToSource}"></Button>
-            <Button Grid.Row="3" x:Name="btn2" Content="Update" Click="Button_Click"></Button>
-        </Grid>
+
         
    </Grid>
 </Window>

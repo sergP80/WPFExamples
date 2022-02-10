@@ -11,10 +11,8 @@ namespace WpfBinding1
     {
         private string model;
         public string Model { 
-            get
-            {
-                return model;
-            }
+            get => model;
+            
             set
             {
                 model = value;
@@ -22,14 +20,22 @@ namespace WpfBinding1
             }
         }
 
-        public int Year { get; set; }
+        public int YearUtilizy { get; set; }
+
+        private int year;
+        public int Year {
+            get => year;
+            set
+            {
+                this.year = value;
+                this.UpdateProperty("Year");
+            } 
+        }
 
         private double velocity;
         public double Velocity {
-            get
-            {
-                return velocity;
-            }
+            get => velocity;
+            
             set
             {
                 velocity = value;
@@ -41,10 +47,7 @@ namespace WpfBinding1
 
         private void UpdateProperty(string propName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
     }
 }
