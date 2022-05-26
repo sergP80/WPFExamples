@@ -222,7 +222,8 @@
 
                     <TextBlock Grid.Row="3" Text="{DynamicResource rk_detailsMaxPrice}"
                                Style="{StaticResource LabelDetailStyle}"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="txbMaxPrice" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedItem.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <!--<TextBox Grid.Row="3" Grid.Column="1" x:Name="txbMaxPrice" Style="{StaticResource TextDetailStyle}" Text="{Binding Path=SelectedItem.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+                    <Button  Grid.Row="3" Grid.Column="1" x:Name="txbMaxPrice" Style="{StaticResource btnStyle}"/>
                 </Grid>
             </Grid>
         </Grid>

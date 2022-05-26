@@ -6,8 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/dicts/MainWindowResources.xaml"/>
-                <ResourceDictionary Source="Resources/langs/lang.xaml"/>
+                <ResourceDictionary x:Name="rcMain" Source="Resources/dicts/MainWindowResources.xaml"/>
+                <ResourceDictionary x:Name="rcLang" Source="Resources/langs/lang.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

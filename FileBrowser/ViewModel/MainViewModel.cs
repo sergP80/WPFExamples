@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FileBrowser.ViewModel
 {
@@ -50,7 +51,7 @@ namespace FileBrowser.ViewModel
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
             return result;
